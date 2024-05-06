@@ -1,0 +1,226 @@
+#include <iostream>
+using namespace std;
+
+ 
+int
+main ()
+{
+    setlocale(LC_ALL, "Russian");
+  
+int x = 12;
+  
+int badX = 32;
+
+int superbadx = 47;
+  
+int swordX = 15;
+  
+ 
+int health = 100;
+  
+int badHealth = 100;
+  
+int superbadhealth = 150;  
+ 
+int strength = 1;
+  
+int badStrength = 2;
+
+int superbadstrength = 5;
+  
+int swordStrength = 10;
+  
+ 
+bool drawSword = true;
+  
+char dir;
+  
+while (true)
+    {
+      
+cout << "Health: " << health << ", Strength: " << strength << endl;
+      
+if (x == swordX)
+ {
+   cout << "      T:Опана, меч" << endl;
+drawSword = false;
+   
+strength = strength + swordStrength;
+ 
+}
+if (x == superbadx - 1 || x == superbadx + 1)
+    {
+        while (health > 0 && superbadhealth > 0)
+        {
+            superbadhealth = superbadhealth - strength;
+            
+            if (superbadhealth <= 0) 
+            {
+            cout << "      T:Домой " << endl << "      X:Ах ты..." << endl;
+            superbadx = 0;
+            break;
+            
+        }
+        health = health - superbadstrength;
+        
+        if (health <= 0)
+        {
+            cout << endl <<      "Game over, You are Died!";
+            break;
+        }
+        }
+    }
+if (x == badX - 1 || x == badX + 1)
+ {
+   
+while (health > 0 && badHealth > 0)
+     {
+       
+badHealth = badHealth - strength;
+       
+if (badHealth <= 0)
+  {
+cout << "      @:Возьми меня с собой, прошу, мне некуда идти" << endl << "      T:Хммм" << endl;  
+cout << "      Взять @ с собой в путешествие?" << endl << "      Да-1           Нет-2";
+int y;
+cin >> y;
+switch(y){
+case 1:
+cout << "      @:Спасибо, я сделаю все что смогу для тебя" <<endl;
+badX ++;
+break;
+case 2:
+cout << "      @:...";
+badX = 0;
+break;
+default:
+cout <<"Пожалуйста, выберите один из вариантов";
+break;
+}
+
+}
+       
+health = health - badStrength;
+       
+if (health <= 0)
+  {
+    
+cout << endl <<      "Game over, You are Died!";
+    
+break;
+  
+}
+     
+}
+ 
+}
+      
+for (int i = 0; i < 50; i++)
+
+ {
+   
+if (i == swordX && drawSword == true)
+     {
+       
+cout << ",";
+     
+}
+   
+   else if (i == x)
+     {
+       
+cout << "T";
+     
+}
+   
+   else if (i == badX)
+     {
+       
+cout << "@";
+     
+}
+   
+    else if (i == superbadx)
+      {
+cout << "X";
+          
+      }
+   else
+     {
+       
+cout << ".";
+     
+}
+ 
+ 
+ 
+}
+cout<< endl;
+for (int i = 0; i < 50; i++)
+
+ {
+   
+if (i == swordX && drawSword == true)
+     {
+       
+cout << ",";
+     
+}
+   
+   else if (i == x)
+     {
+       
+cout << "T";
+     
+}
+   
+   else if (i == badX)
+     {
+       
+cout << "@";
+     
+}
+   
+    else if (i == superbadx)
+      {
+cout << "X";
+          
+      }
+   else
+     {
+       
+cout << ".";
+     
+}
+ 
+ 
+ 
+}
+
+      
+cout << endl;
+      
+ 
+cin >> dir;
+      
+if (dir == 'd')
+ {
+   
+x++;
+ 
+}
+      
+if (dir == 'a')
+ {
+   
+x--;
+ 
+}
+    
+ 
+}
+  
+ 
+return 0;
+
+}
